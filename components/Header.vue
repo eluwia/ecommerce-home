@@ -5,18 +5,18 @@
             <div class="top-bar-content">
               <div class="top-bar-content-left">
                 <button class="top-btn" type="button">
-                  <img src="/icons/stores.png" alt="stores"/>
+                  <img src="/icons/stores.svg" alt="stores"/>
                   <span>Stores</span>
                 </button>
 
                 <button class="top-btn" type="button">
-                  <img src="/icons/catalog.png" alt="catalog"/>
+                  <img src="/icons/catalog.svg" alt="catalog"/>
                   <span>Catalog</span>
                 </button>
               </div>
 
                 <button class="top-icon-btn" type="button">
-                  <img src="/icons/phone.png" alt="phone"/>
+                  <img src="/icons/phone.svg" alt="phone"/>
                 </button>
             </div>
         </div>
@@ -25,17 +25,19 @@
          <div class="main-bar">
             <div class="main-bar-content">
               <a class="main-bar-logo" href="/">
-                <img src="/icons/logo.png" alt="logo"/>
+                <img src="/icons/logo.svg" alt="logo"/>
               </a>
               <div class="main-bar-content-right">
+                <div class="main-bar-icons-left">
                 <button class="icon-btn" type="button">
-                  <img src="/icons/search.png" alt="search"/>
+                  <img src="/icons/search.svg" alt="search"/>
                 </button>
                 <button class="cart-btn" type="button">
-                  <img src="/icons/basket.png" alt="basket"/>
+                  <img src="/icons/basket.svg" alt="basket"/>
                 </button>
+              </div>
                 <button class="icon-btn" type="button">
-                  <img src="/icons/menu.png" alt="menu"/>
+                  <img src="/icons/menu.svg" alt="menu"/>
                 </button>
               </div>
             </div>
@@ -48,46 +50,64 @@
 
 .header {
   background: #fff;
-  box-shadow: 0 4px 16px rgba(42,42,72,0.04);
+  box-shadow: 0 2px 8px rgba(42,42,72,0.06);
 }
 
 .top-bar {
   width: 100%;
   height: 32px;
-  background: #505357;
+  background: var(--gray);
 }
 
 .top-btn span {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-roboto);
   font-weight: 500;
   font-size: 14px;
-  color: #fff;
+  color: #ffffff;
+  line-height: 24px;
 }
+
+.top-btn,
+.top-icon-btn,
+.icon-btn,
+.cart-btn {
+  font: inherit;
+  color: inherit;
+}
+
 
 .top-btn img {
   width: 18px;
-  height: 14px;
+  height: 18px;
   display: block;
+  flex: 0 0 auto;
+  position: relative;
+  top: -1px;
 }
 
 .top-icon-btn img {
-  width:24px;
-  height: 24px;
+  width: 16px;
+  height: auto;
   display: block;
+  flex: 0 0 auto;
+  position: relative;
 }
 
 .top-bar-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  height: 100%;
+  padding-left: 26px;
+  padding-right: 16px;
+  height: 32px;
 }
 
 .top-bar-content-left {
   display: flex;
   align-items: center;
   gap: 24px;
+  justify-content: flex-start;
+  flex: 1
+  ;
 }
 
 .top-btn {
@@ -97,15 +117,20 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  
 }
 
 .top-icon-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   background: transparent;
   border: none;
   cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  flex: 0 0 24px;
 }
 
 
@@ -133,7 +158,13 @@
 .main-bar-content-right {
   display: flex;
   align-items: center;
-  gap: 32px;
+}
+
+.main-bar-icons-left {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  margin-right: 31px;
 }
 
 /* i will add badge to cart button class */
@@ -152,9 +183,15 @@
 
 .icon-btn img,
 .cart-btn img {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   display: block;
+}
+
+.cart-btn img {
+  top: -4px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 @media (min-width: 1024px) {

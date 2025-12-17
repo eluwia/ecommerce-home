@@ -3,5 +3,6 @@
 </template>
 
 <script setup>
-    import '@/assets/css/main.css';
+    import '@/assets/css/base.css';
+    import '@/assets/css/tokens.css';
 </script>
