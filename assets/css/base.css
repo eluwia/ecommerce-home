@@ -1,0 +1,3 @@
+*{ box-sizing:border-box; }
+body{ margin:0; font-family: Roboto, system-ui, -apple-system, sans-serif; color:var(--text); }
+.container{ width:100%; max-width:375px; margin:0 auto; padding:0 16px; } /* mobile container fikri Figma’da sürekli 16px */

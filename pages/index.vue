@@ -1,15 +1,13 @@
 <template>
-    <div class="page">
-        <Button/>
-    </div>
+  <Header />
+  <main class="page">
+  </main>
 </template>
 
 <script setup>
-    import Button from '@/components/ui/Button.vue';
+import Header from '@/components/Header.vue'
 </script>
 
 <style scoped>
-    .page {
-        padding: 20px;
-    }
+
 </style>
