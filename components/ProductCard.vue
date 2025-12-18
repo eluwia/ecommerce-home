@@ -7,9 +7,10 @@
         <p class="product-card-price">
             {{ product.price }}
         </p>
-        <p class="product-card-description">
-            {{ product.description }}
-        </p>
+        <p class="product-card-brand">{{ product.brand }}</p>
+<p class="product-card-title">{{ product.title }}</p>
+<p class="product-card-weight" v-if="product.weight">{{ product.weight }}</p>
+
     </div>
     <div class="product-card-actions">
         <span class="divider" aria-hidden="true"></span>
@@ -38,6 +39,7 @@ defineProps({
 </script>
 
 <style scoped>
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -70,14 +72,13 @@ defineProps({
   padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 1px;
 }
 
 .product-card-price {
   margin: 0;
   font-weight: 700;
   font-size: 16px;
-  line-height: 16px;
   color: var(--text);
 }
 
@@ -93,7 +94,6 @@ defineProps({
   margin: 0;
   font-weight: 400;
   font-size: 14px;
-  line-height: 24px;
   color: var(--muted);
 }
 
@@ -140,5 +140,9 @@ defineProps({
   background: rgba(236, 236, 236, 0.16);
 }
 
+.product-card-body p {
+  margin: 0;
+  gap:0;
+}
 
 </style>
