@@ -27,15 +27,13 @@
               <a class="main-bar-logo" href="/">
                 <img src="/icons/logo.svg" alt="logo"/>
               </a>
-              <div class="main-bar-content-right">
-                <div class="main-bar-icons-left">
+              <div class="main-bar-icons">
                 <button class="icon-btn" type="button">
                   <img src="/icons/search.svg" alt="search"/>
                 </button>
                 <button class="cart-btn" type="button">
                   <img src="/icons/basket.svg" alt="basket"/>
                 </button>
-              </div>
                 <button class="icon-btn" type="button">
                   <img src="/icons/menu.svg" alt="menu"/>
                 </button>
@@ -45,6 +43,13 @@
 
     </header>
 </template>
+
+<script setup>
+  import { onMounted, onUnmounted } from 'vue'
+onMounted(() => console.log('mounted'))
+onUnmounted(() => console.log('unmounted'))
+
+</script>
 
 <style scoped>
 
@@ -82,6 +87,7 @@
   display: block;
   flex: 0 0 auto;
   position: relative;
+  margin:0;
   top: -1px;
 }
 
@@ -96,8 +102,7 @@
 .top-bar-content {
   display: flex;
   align-items: center;
-  padding-left: 26px;
-  padding-right: 16px;
+  padding: 0 24px;
   height: 32px;
 }
 
@@ -155,19 +160,12 @@
   display: block;
 }
 
-.main-bar-content-right {
+.main-bar-icons {
   display: flex;
   align-items: center;
+  gap: 32px;
 }
 
-.main-bar-icons-left {
-  display: flex;
-  align-items: center;
-  gap: 34px;
-  margin-right: 31px;
-}
-
-/* i will add badge to cart button class */
 .icon-btn,
 .cart-btn {
   width: 32px;

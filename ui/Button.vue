@@ -31,10 +31,17 @@
 <style scoped>
 
 .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
+}
+
+.btn--full{
+    width: 100%;
 }
 
 .btn--sm {

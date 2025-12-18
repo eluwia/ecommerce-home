@@ -21,7 +21,7 @@
            
             
 
-            <Button variant="primary" class="hero-button">
+            <Button class="hero-button">
                 SHOP NOW
             </Button>
         </div>
@@ -35,6 +35,11 @@
 </template>
 
 <script setup>
+    import Button from '@/ui/Button.vue'
+    import { onMounted, onUnmounted } from 'vue'
+onMounted(() => console.log('mounted'))
+onUnmounted(() => console.log('unmounted'))
+
 </script>
 
 <style scoped>
@@ -43,21 +48,12 @@
   display: flex;
   flex-direction: column;
 
-  background:
-    linear-gradient(
-      225deg,
-      rgba(242, 240, 255, 0.00) 0%,
-      rgba(242, 240, 255, 0.40) 55%,
-      rgba(242, 240, 255, 0.85) 100%
-    ),
-    linear-gradient(
-      156deg,
-      #F2F0FF 0%,
-      rgba(251, 251, 255, 0.85) 30%,
-      rgba(255, 255, 255, 0.95) 50%,
-      rgba(255, 255, 255, 0.60) 72%,
-      #F2F0FF 100%
-    );
+  background: linear-gradient(
+    163deg,
+    #F2F0FF 0%,
+    rgba(251, 251, 255, 0.9) 45%,
+    #F2F0FF 100%
+  );
 }
 
 
@@ -65,15 +61,17 @@
 .hero-banner {
     width: 100%;
     height: 295px;
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .hero-banner img {
     width: 100%;
     height: 100%;
-    object-fit:scale-down;
+    object-fit: contain;
     display: block;
 }
 
@@ -143,6 +141,10 @@
     font-size: 14px;
     line-height: 16px;
     cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .sliders {
