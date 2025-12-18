@@ -3,6 +3,7 @@
     <Header />
     <Hero/>
     <Featured/>
+    <Banner/>
   </main>
 </template>
 
@@ -11,7 +12,7 @@
 import Header from '@/components/Header.vue'
 import Hero from '@/components/Hero.vue'
 import Featured from '@/components/Featured.vue'
-
+import Banner from '@/components/Banner.vue'
 </script>
 
 <style scoped>
