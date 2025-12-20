@@ -79,6 +79,7 @@ const bgStyle = computed(() => ({
    border-radius: 4px;
    background: var(--secondary);
    cursor: pointer;
+   transition: background 0.2s ease;
 
    font-family: var(--font-roboto);
    font-weight: 700;
@@ -88,4 +89,55 @@ const bgStyle = computed(() => ({
    color: #fff;
 }
 
+@media (hover: hover) {
+  .categories-card-button:hover {
+    background: #007d8f;
+  }
+}@media (min-width: 1024px) and (hover: hover) {
+  .categories-card {
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .categories-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .categories-card-body {
+    position: relative;
+    transition:
+      background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .categories-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.10);
+  }
+
+  .categories-card:hover::before {
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  .categories-card:hover .categories-card-body {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .categories-card-button {
+    transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .categories-card-button:hover {
+    background: #007d8f;
+  }
+}
 </style>

@@ -1,8 +1,76 @@
-:root{
-    --primary: #ff27ad;
-    --secondary: #0099a8;
-    --text:#2a2a48;
-    --muted:#485363;
-    --gray:#505357;
-    --smoke:#ececec;
+:root {
+  /* colors */
+  --primary: #ff27ad;
+  --secondary: #0099a8;
+  
+  /* text */
+  --text: #2a2a48;
+  --muted: #485363;
+  --gray: #505357;
+  --smoke: #ececec;
+  --border: #f5f5f5;
+  
+  /* color tokens */
+  --color-text-primary: #2A2A48;
+  --color-text-secondary: #485363;
+  --color-text-tertiary: #8493A8;
+  --color-text-inverse: #FFFFFF;
+  --color-text-placeholder: rgba(42, 42, 72, 0.6);
+  --color-text-dark-blue: #00106B;
+  
+  --color-primary: #FF27AD;
+  --color-primary-hover: #E02680;
+  --color-secondary: #0099A8;
+  --color-secondary-hover: #007D8F;
+  
+  --color-bg: #FFFFFF;
+  --color-bg-disabled: rgba(236, 236, 236, 0.3);
+  --color-bg-subtle: rgba(236, 236, 236, 0.16);
+  --color-bg-overlay: rgba(236, 236, 236, 0.3);
+  --color-bg-light-purple: #F2F0FF;
+  --color-input-bg: #F0F0F0;
+  --color-overlay-dark: rgba(0, 0, 0, 0.8);
+  
+  --color-border: #ECECEC;
+  --color-border-focus: #FF27AD;
+  
+  /* spacing */
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  
+  /* fonts */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 34px;
+  
+  --line-height-tight: 16px;
+  --line-height-base: 24px;
+  --line-height-relaxed: 32px;
+  --line-height-loose: 48px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  
+  /* borders */
+  --radius-sm: 2px;
+  --radius-base: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  
+  /* shadows */
+  --shadow-sm: 0px 1px 2px rgba(55, 65, 81, 0.08);
+  --shadow-md: 0px 4px 16px rgba(42, 42, 72, 0.04);
+  --shadow-lg: 0px 2px 16px rgba(42, 42, 72, 0.06);
+  --color-shadow-subtle: rgba(0, 0, 0, 0.04);
+  --color-shadow-medium: rgba(0, 0, 0, 0.08);
+  --color-shadow-strong: rgba(0, 0, 0, 0.12);
 }

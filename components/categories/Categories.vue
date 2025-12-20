@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import CategoriesCard from '@/components/CategoriesCard.vue'
+import CategoriesCard from '@/components/categories/CategoriesCard.vue'
 
 const categories = [
   {
@@ -78,5 +78,29 @@ const categories = [
     font-size: 20px;
     line-height: 24px;
     color: var(--secondary);
+}
+
+@media (min-width: 1024px) {
+  .categories {
+    padding: 40px 0px;
+    max-width: 760px;
+    margin: 0 auto;
+    gap: 40px;
+  }
+
+  .categories-title {
+    height: 32px;
+  }
+
+  .categories-title .title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .categories-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
 }
 </style>

@@ -28,7 +28,7 @@
 
 <style scoped>
 .input {
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: 10px;
     font-size: 16px;
@@ -36,7 +36,7 @@
 }
 
 .input--primary {
-    background-color: #f0f0f0;
+    background-color: var(--color-input-bg);
 }   
 
 .input--sm {

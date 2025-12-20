@@ -16,9 +16,10 @@
   <button class="banner-button">SHOP NOW</button>
 </div>
 
-</div>
 <img class="banner-img1" src="/images/Nivea.svg" alt="banner-icon1" />
-<img class="banner-img" src="/images/Nivea-2.svg" alt="banner-icon" />    
+<img class="banner-img" src="/images/Nivea-2.svg" alt="banner-icon" />
+
+</div>    
 </section>
 </template>
 
@@ -29,13 +30,14 @@
   height: 514px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(
-      88.28deg,
-      rgba(16, 160, 174, 0.3) 14.56%,
-      rgba(98, 214, 225, 0.3) 56.19%,
-      rgba(21, 166, 181, 0.3) 98.69%
-    ),
-    rgba(19, 138, 150, 0.3);
+  background: linear-gradient(0deg, rgba(19, 138, 150, 0.3), rgba(19, 138, 150, 0.3)),
+    linear-gradient(88.28deg, rgba(16, 160, 174, 0.3) 14.56%, rgba(98, 214, 225, 0.3) 56.19%, rgba(21, 166, 181, 0.3) 98.69%);
+}
+
+.banner-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .banner-bg {
@@ -55,6 +57,7 @@
   left: 54px;
   width: 250px;
   height: 248px;
+  z-index: 2;
 }
 
 .banner-img {
@@ -64,6 +67,7 @@
   width: 251px;
   height: 141px;
   object-fit: contain;
+  z-index: 2;
 }
 
 .banner-img-container {
@@ -77,7 +81,7 @@
   padding: 32px;
   box-sizing: border-box;
   background: #fff;
-  z-index: 0;
+  z-index: 1;
 
   display: flex;
   flex-direction: column;
@@ -101,6 +105,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
+  padding: 0;
 }
 
 .banner-title {
@@ -143,6 +148,8 @@
   border: 0;
   border-radius: 4px;
   background: #0099a8;
+  cursor: pointer;
+  transition: background 0.2s ease;
 
   display: inline-flex;
   align-items: center;
@@ -154,6 +161,88 @@
   line-height: 16px;
   text-transform: uppercase;
   color: #ffffff;
+}
+
+@media (hover: hover) {
+  .banner-button:hover {
+    background: #007d8f;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner {
+    height: 400px;
+  }
+
+  .banner-content {
+    width: 1160px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+  }
+
+  .banner-img-container {
+    position: absolute;
+    width: 274px;
+    height: 246px;
+    left: 435px;
+    top: 51px;
+    border-radius: 40px 0px;
+    padding: 32px;
+    gap: 12px;
+    z-index: 1;
+  }
+
+  .banner-img1 {
+    position: absolute;
+    width: 296px;
+    height: 294px;
+    left: 659px;
+    top: 60px;
+    transform: none;
+    z-index: 2;
+  }
+
+  .banner-img {
+    position: absolute;
+    width: 519px;
+    height: 292px;
+    left: 10px;
+    top: 70px;
+    transform: none;
+    z-index: 2;
+  }
+
+  .banner-title {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .banner-secondary-title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .banner-discount {
+    font-size: 48px;
+    line-height: 44px;
+    margin-bottom: -8px;
+  }
+
+  .banner-discount-text {
+    font-size: 34px;
+    line-height: 38px;
+  }
+
+  .banner-button {
+    width: 105px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 0 16px;
+    gap: 8px;
+  }
 }
 
   

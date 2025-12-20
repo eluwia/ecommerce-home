@@ -12,8 +12,10 @@
     </section>
     <section class="newsletter">
         <div class="newsletter-content">
-            <h2 class="newsletter-title">Sign up to our newsletter</h2>
-            <p class="newsletter-description">Be the first to hear about the latest offers.</p>
+            <div class="newsletter-text">
+                <h2 class="newsletter-title">Sign up to our newsletter</h2>
+                <p class="newsletter-description">Be the first to hear about the latest offers.</p>
+            </div>
             <form class="newsletter-form">
                 <input type="email" placeholder="Your email address" />
                 <button class="newsletter-button" variant="primary" type="submit">SUBSCRIBE</button>
@@ -24,7 +26,7 @@
 
 
 <script setup>
-    import ProductCard from '@/components/ProductCard.vue'
+    import ProductCard from '@/components/featuredproducts/ProductCard.vue'
     
     const getUnit = (p) => {
       const text = `${p.title} ${p.description} ${p.category}`.toLowerCase()
@@ -39,15 +41,23 @@
       return 'g'
     }
     
-    const [{ data: beautyData }, { data: skinCareData }] = await Promise.all([
-      useFetch('https://dummyjson.com/products/category/beauty'),
-      useFetch('https://dummyjson.com/products/category/skin-care'),
+    const [{ data: beautyData, error: beautyError }, { data: skinCareData, error: skinError }] = await Promise.all([
+      useFetch('https://dummyjson.com/products/category/beauty', { key: 'products-beauty' }),
+      useFetch('https://dummyjson.com/products/category/skin-care', { key: 'products-skin-care' }),
     ])
     
     const products = computed(() => {
+      if (beautyError.value || skinError.value) {
+        return []
+      }
+      
       const beauty = beautyData.value?.products ?? []
       const skin = skinCareData.value?.products ?? []
       const list = [...beauty, ...skin]
+    
+      if (list.length === 0) {
+        return []
+      }
     
       return list.slice(0, 4).map((p) => ({
         id: p.id,
@@ -130,6 +140,11 @@
     align-items: flex-start;
     gap: 8px;
 }
+.newsletter-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 .newsletter-title {
     margin: 0;
     font-family: var(--font-roboto);
@@ -137,14 +152,6 @@
     font-size: 20px;
     color: #2A2A48;
     line-height: 24px;
-}
-.newsletter-description {
-    margin: 0;
-    font-family: var(--font-roboto);
-    font-weight: 700;
-    font-size: 20px;
-    color: #2a2a48;
-    line-height: 20px;
 }
 .newsletter-description {
     margin: 0;
@@ -198,5 +205,76 @@ font-size: 14px;
 line-height: 16px;
 text-transform: uppercase;
 color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .featured {
+    padding: 64px 24px;
+    max-width: 1160px;
+    margin: 0 auto;
+    gap: 40px;
+  }
+
+  .section-title {
+    height: 32px;
+  }
+
+  .section-title .title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(4, 260px);
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .newsletter {
+    height: auto;
+    padding: 48px 24px;
+  }
+
+  .newsletter-content {
+    max-width: 1160px;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+  }
+
+  .newsletter-text {
+    flex-shrink: 0;
+  }
+
+  .newsletter-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .newsletter-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .newsletter-form {
+    flex: 1;
+    max-width: 560px;
+    margin-top: 0;
+    height: 56px;
+  }
+
+  .newsletter-form input[type="email"] {
+    height: 56px;
+    font-size: 16px;
+    padding: 0 16px;
+  }
+
+  .newsletter-button {
+    width: 140px;
+    height: 56px;
+    font-size: 16px;
+  }
 }
 </style>

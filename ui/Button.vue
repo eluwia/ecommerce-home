@@ -60,28 +60,28 @@
 }
 
 .btn--primary {
-    background-color: #ff2f92;
-    color:white;
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
 }
 
 .btn--secondary {
-    background-color: #00a8a8;
-    color:white;
+    background-color: var(--color-secondary);
+    color: var(--color-text-inverse);
 }
 
 .btn--ghost {
     background-color: transparent;
-    color: #00a8a8;
+    color: var(--color-secondary);
 }
 
 /* button hover for desktop view */
 
 @media (hover: hover) {
     .btn--primary:hover {
-        background-color: #e02680;
+        background-color: var(--color-primary-hover);
     }
     .btn--secondary:hover {
-        background-color: #008f8f;
+        background-color: var(--color-secondary-hover);
     }
     .btn--ghost:hover {
         text-decoration: underline;
