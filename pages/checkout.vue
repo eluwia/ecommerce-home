@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <input class="input" placeholder="Discount code" />
+        <input class="input discount-code" placeholder="Discount code" />
 
         <div class="checkout-summary-lines">
           <div class="checkout-summary-line">
@@ -88,7 +88,7 @@
 
           <div class="field">
             <label class="label">Phone Number <span class="required">*</span></label>
-            <input v-model="phone" class="input" placeholder="+90 (5_ _) _ _ _ - _ _ - _ _" />
+            <input v-model="phone" class="input" placeholder="+90 (5_ _) _ _ _ - _ _ - _ _" maxlength="11" />
           </div>
 
           <div class="field">
@@ -208,20 +208,20 @@
 
             <div class="field">
               <label class="label">Card Number <span class="required">*</span></label>
-              <input v-model="cardNumber" class="input" placeholder="Enter digits without spaces" />
+              <input v-model="cardNumber" class="input" placeholder="Enter digits without spaces" type="text" maxlength="16" @input="formatCardNumber" />
               <span class="helper">Enter digits without spaces</span>
             </div>
 
             <div class="checkout-row-2">
               <div class="field">
                 <label class="label">Expiry Date <span class="required">*</span></label>
-                <input v-model="expiryDate" class="input" placeholder="MM / YY" />
+                <input v-model="expiryDate" class="input" placeholder="MM / YY" type="text" maxlength="7" @input="formatExpiryDate" />
               </div>
 
               <div class="field">
                 <label class="label">CVV <span class="required">*</span></label>
                 <div class="cvv-wrap">
-                  <input v-model="cvv" class="input" placeholder="" />
+                  <input v-model="cvv" class="input" placeholder="" type="text" maxlength="3" />
                   <button type="button" class="cvv-help" aria-label="CVV help">
                     <img src="/icons/cvv.png" alt="cvv" />
                   </button>
@@ -232,7 +232,14 @@
             <p class="checkout-required-note">* Required fields</p>
 
             <div class="pay-wrap">
-              <button class="btn btn--primary btn--full" type="button" :disabled="!canPay">PAY NOW</button>
+              <button 
+                class="btn btn--full" 
+                :class="{ 'btn--primary': canPay, 'btn--disabled': !canPay }" 
+                type="button" 
+                :disabled="!canPay"
+              >
+                PAY NOW
+              </button>
             </div>
 
             <div class="divider"></div>
@@ -352,16 +359,30 @@ const canPay = computed(() => {
     firstName.value.trim() &&
     lastName.value.trim() &&
     email.value.trim() &&
-    phone.value.trim() &&
+    phone.value.trim().length <= 11 &&
+    phone.value.trim().length > 0 &&
     selectedCity.value &&
     selectedDistrict.value &&
     address.value.trim() &&
     cardHolder.value.trim() &&
-    cardNumber.value.trim() &&
+    cardNumber.value.length === 16 &&
     expiryDate.value.trim() &&
-    cvv.value.trim()
+    cvv.value.length === 3
   )
 })
+
+const formatCardNumber = (e) => {
+  cardNumber.value = e.target.value.replace(/\D/g, '').slice(0, 16)
+}
+
+const formatExpiryDate = (e) => {
+  let val = e.target.value.replace(/\D/g, '').slice(0, 4)
+  if (val.length >= 2) {
+    expiryDate.value = val.slice(0, 2) + ' / ' + val.slice(2, 4)
+  } else {
+    expiryDate.value = val
+  }
+}
 
 const formatTL = (n) => `${Number(n || 0).toFixed(2).replace('.', ',')} TL`
 </script>
@@ -439,10 +460,13 @@ const formatTL = (n) => `${Number(n || 0).toFixed(2).replace('.', ',')} TL`
 .checkout-summary-card {
   background: var(--color-bg);
   border-radius: var(--radius-md);
-  padding: var(--space-16);
+  padding: var(--space-24);
   margin: 0 0 var(--space-16);
   font-family: var(--font-roboto);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
 }
 
 .summary-subtitle {
@@ -451,8 +475,8 @@ const formatTL = (n) => `${Number(n || 0).toFixed(2).replace('.', ',')} TL`
   align-items: center;
   padding: 0;
   width: 100%;
-  height: 32px;
-  margin: 0 0 var(--space-16) 0;
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .checkout-summary-title {
@@ -468,7 +492,8 @@ const formatTL = (n) => `${Number(n || 0).toFixed(2).replace('.', ',')} TL`
   flex-direction: column;
   gap: var(--space-16);
   width: 100%;
-  margin-bottom: var(--space-16);
+  flex: 1;
+  min-height: 0;
 }
 
 .checkout-summary-item-card {
@@ -589,6 +614,7 @@ const formatTL = (n) => `${Number(n || 0).toFixed(2).replace('.', ',')} TL`
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
+  flex-shrink: 0;
 }
 
 .checkout-summary-line {
@@ -866,6 +892,17 @@ const formatTL = (n) => `${Number(n || 0).toFixed(2).replace('.', ',')} TL`
   justify-content: center;
 }
 
+.btn--disabled {
+  background-color: var(--color-bg-disabled);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn--disabled:hover {
+  background-color: var(--color-bg-disabled);
+}
+
 @media (min-width: 1024px) {
   .checkout {
     display: flex;
@@ -949,12 +986,12 @@ const formatTL = (n) => `${Number(n || 0).toFixed(2).replace('.', ',')} TL`
   }
 
   .summary-subtitle {
-    height: auto;
-    margin-bottom: var(--space-24);
+    flex-shrink: 0;
   }
 
   .checkout-summary-items {
-    margin-bottom: var(--space-24);
+    flex: 1;
+    min-height: 0;
   }
 
   .checkout-card {

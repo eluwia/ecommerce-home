@@ -58,6 +58,7 @@
   width: 250px;
   height: 248px;
   z-index: 2;
+  pointer-events: none;
 }
 
 .banner-img {
@@ -68,6 +69,7 @@
   height: 141px;
   object-fit: contain;
   z-index: 2;
+  pointer-events: none;
 }
 
 .banner-img-container {
@@ -81,7 +83,7 @@
   padding: 32px;
   box-sizing: border-box;
   background: #fff;
-  z-index: 1;
+  z-index: 3;
 
   display: flex;
   flex-direction: column;
@@ -144,16 +146,19 @@
 .banner-button {
   width: 105px;
   height: 32px;
-  padding: 0 16px;
+  padding: 0;
+  margin: 0;
   border: 0;
   border-radius: 4px;
   background: #0099a8;
   cursor: pointer;
-  transition: background 0.2s ease;
+  position: relative;
+  z-index: 10;
 
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 
   font-family: var(--font-roboto);
   font-weight: 700;
@@ -161,12 +166,6 @@
   line-height: 16px;
   text-transform: uppercase;
   color: #ffffff;
-}
-
-@media (hover: hover) {
-  .banner-button:hover {
-    background: #007d8f;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -202,6 +201,7 @@
     top: 60px;
     transform: none;
     z-index: 2;
+    pointer-events: none;
   }
 
   .banner-img {
@@ -212,6 +212,7 @@
     top: 70px;
     transform: none;
     z-index: 2;
+    pointer-events: none;
   }
 
   .banner-title {
@@ -240,8 +241,11 @@
     height: 32px;
     font-size: 14px;
     line-height: 16px;
-    padding: 0 16px;
-    gap: 8px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
   }
 }
 
