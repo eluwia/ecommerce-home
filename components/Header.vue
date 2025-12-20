@@ -214,7 +214,7 @@ const handleSkincareFocusOut = (e) => {
   font-family: var(--font-roboto);
   font-weight: 400;
   font-size: 14px;
-  color: #ffffff;
+  color: var(--color-text-muted);
   line-height: 20px;
 }
 

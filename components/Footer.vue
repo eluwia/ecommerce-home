@@ -38,10 +38,6 @@
       </nav>
   
       <div class="footer-bottom">
-        <div class="footer-meta">
-          <p class="footer-copy">© WATSONS 2021 ALL RIGHTS RESERVED | A MEMBER OF CK HUTCHISON HOLDINGS</p>
-        </div>
-        
         <div class="footer-social" aria-label="Social links">
           <a class="social-btn" href="#" aria-label="Facebook">
             <img src="/icons/facebook.svg" alt="" aria-hidden="true" />
@@ -58,6 +54,11 @@
           <a class="social-btn" href="#" aria-label="Pinterest">
             <img src="/icons/pinterest.svg" alt="" aria-hidden="true" />
           </a>
+        </div>
+        
+        <div class="footer-meta">
+          <p class="footer-copy-watsons">© WATSONS 2021 ALL RIGHTS RESERVED</p>
+          <p class="footer-copy-member">A MEMBER OF CK HUTCHISON HOLDINGS</p>
         </div>
       </div>
     </footer>
@@ -217,20 +218,33 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        align-items: center;
+      }
+
+      .footer-social {
+        order: 1;
       }
 
       .footer-meta {
+        order: 2;
         text-align: center;
         display: flex;
         flex-direction: column;
         gap: 4px;
       }
       
-      .footer-copy {
+      .footer-copy-watsons,
+      .footer-copy-member {
         margin: 0;
         font-family: var(--font-roboto);
-        font-size: 10px;
-        color: rgba(42, 42, 72, 0.6);
+        font-weight: var(--font-weight-medium);
+        font-size: var(--font-size-2xs);
+        line-height: var(--line-height-tight);
+        letter-spacing: 0px;
+        text-align: center;
+        vertical-align: middle;
+        text-transform: uppercase;
+        color: var(--color-text-tertiary);
       }
 
 @media (min-width: 1024px) {
@@ -332,7 +346,8 @@
     height: 32px;
   }
 
-  .footer-copy {
+  .footer-copy-watsons,
+  .footer-copy-member {
     font-size: 10px;
     line-height: 16px;
     font-weight: 500;

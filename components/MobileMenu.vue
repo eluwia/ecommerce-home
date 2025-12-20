@@ -99,6 +99,7 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
   position: fixed;
   inset: 0;
   z-index: 9999;
+  overflow: visible;
 }
 
 .mobile-menu-overlay {
@@ -108,27 +109,34 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 }
 
 .mobile-menu-drawer {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   width: 300px;
   height: 100vh;
   background: #ffffff;
   overflow: hidden;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile-menu-topbar {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  width: 300px;
+  width: 100%;
   height: 56px;
   padding: 16px;
   background: #f2f0ff;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  gap: 8px;
   box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .mobile-menu-icon-btn {
@@ -152,7 +160,11 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 
 .mobile-menu-title {
   margin: 0;
-  width: 244px;
+  padding: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  width: 0;
   height: 24px;
   display: flex;
   align-items: center;
@@ -163,16 +175,19 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
   font-size: 20px;
   line-height: 24px;
   color: #2a2a48;
-  flex: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mobile-menu-content {
-  position: absolute;
-  left: 0;
-  top: 56px;
-  bottom: 0;
-  width: 300px;
+  position: relative;
+  top: 0;
+  width: 100%;
+  flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -181,7 +196,7 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 }
 
 .mobile-menu-items {
-  width: 300px;
+  width: 100%;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -196,8 +211,13 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
+
 
 .mobile-menu-row {
   width: 268px;
@@ -236,7 +256,14 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 .mobile-menu-divider {
   width: 268px;
   height: 1px;
-  background: #ececec;
+  background: var(--color-border);
+  margin: 8px 0 0 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  flex-shrink: 0;
+  display: block;
+  box-sizing: border-box;
 }
 
 .mobile-menu-sub {
@@ -327,7 +354,7 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
   width: 268px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
 }
 
 .mobile-menu-user-row {
@@ -366,29 +393,41 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 
 @media (max-width: 1023px) {
   .mobile-menu-wrapper {
-    max-width: 100vw;
-    overflow-x: hidden;
+    overflow: visible;
   }
 
   .mobile-menu-drawer {
     width: min(300px, 100vw);
     max-width: 100vw;
+    display: flex;
+    flex-direction: column;
   }
 
   .mobile-menu-topbar {
     width: 100%;
     max-width: 100%;
+    padding: 16px;
+    margin-right: 8px;
+    box-sizing: border-box;
+    align-items: center;
   }
 
   .mobile-menu-title {
-    width: 100%;
-    max-width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: calc(100% - 32px - 8px);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
   }
 
   .mobile-menu-content {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
   }
 
   .mobile-menu-items {
@@ -408,7 +447,9 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 
   .mobile-menu-divider {
     width: 100%;
-    max-width: 100%;
+    max-width: 268px;
+    height: 1px;
+    background: var(--color-border);
   }
 
   .mobile-menu-sub {
