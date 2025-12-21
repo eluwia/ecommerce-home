@@ -13,6 +13,8 @@ The project covers layout composition, styling, responsive behavior, and UI-leve
 
 Deployed on **Vercel** using the default Nuxt 3 setup.
 
+![Vercel Mobile QR Code](/vercel-qr_png)
+
 ---
 
 ## Tech Stack
